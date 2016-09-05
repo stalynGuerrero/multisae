@@ -1,0 +1,13 @@
+Package: multisae
+Type: Package
+Title: Small Area Estimation using plaucible values
+Version: 0.1.0
+Author: Stalyn Yasid Guerrero Gomez <sguerrero@contratista.icfes.gov.co>;
+        Hugo Andres Gutierrez Rojas <agutierrez@icfes.gov.co>
+Maintainer: Stalyn Yasid Guerrero Gomez <sguerrero@contratista.icfes.gov.co>
+Description: Conjunto de funciones creadas por el Instituto Colombiano para la Evaluación de la Educación - ICFES, para la estimación de los promedios en los colegios no observados de Colombia, empleando la estimación de áreas pequeñas (SAE) y valores plausibles.
+Depends:    sae, dplyr, mice, reshape2, sampling, TeachingSampling, ggmap, ggplot2, scales, gridExtra, grid
+License: GPL-2
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Encoding: UTF8
