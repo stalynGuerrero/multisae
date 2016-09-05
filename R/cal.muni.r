@@ -1,7 +1,7 @@
 #' Result by municipality in exam Saber 3, 5 and 9 for 9th grade in mathematics test
 #' @description
 #' \code{data.frame} que contiene los puntajes en matemáticas del grado 9
-#' agregados por municipio, en el examen Saber 3, 5 y 9 aplicadas en el 2015 en Colombia.
+#' agregados por municipio, en el examen saber 3, 5 y 9 aplicadas en el 2015 en Colombia.
 #' @format
 #' This \code{data.frame} has 1125 rows and 6 columns.
 #' \describe{
