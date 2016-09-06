@@ -1,7 +1,6 @@
 #'Model Selection Fay Herriot based on the CME
 #'@description
 #' Función que seleciona un modelo Fay Herriot  basado
-#'
 #' en el cuadrado medio del error (CME), con base en todas las posibles
 #' combinanciones de \code{p} variables.
 #'
