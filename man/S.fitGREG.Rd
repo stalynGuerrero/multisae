@@ -7,35 +7,33 @@
 S.fitGREG(x, Xk, total, prom, weight, p = 1, stratum = NULL, ...)
 }
 \arguments{
-\item{x}{\code{data.frame} que contiene las variables del modelo}
+\item{x}{\code{data.frame} which contains the model’s variables.}
 
-\item{Xk}{Vector de carácteres con los nombres de las covariables a utilizar en el
-modelo, estas deben estar contenidas en las columnas de \code{x}.}
+\item{Xk}{Vector of characters with the names of the co-variables to
+be used in the model. These must be contained in the columns of  \code{x}.}
 
-\item{total}{Total de la variable auxiliar}
+\item{total}{Total of the auxiliary variable.}
 
-\item{prom}{Nombre de la columna en \code{x} que indica la variable ha estimar.}
+\item{prom}{Name of the column in \code{x} which indicates the variable to estimate.}
 
-\item{weight}{Factor de expansión de cada observación}
+\item{weight}{Expansion factor of each observation.}
 
-\item{p}{Númere máximo de combinaciones a realizar con las covariables,
-por defecto \code{p = 1}.}
+\item{p}{Maximum number of combinations to make with the covariantes. By default \code{p = 1}.}
 
-\item{stratum}{Indicadora de los dominios en la muestra, por defecto \code{stratum = NULL}}
+\item{stratum}{Indicator of the domains in the sample. By default  \code{stratum = NULL}}
 
 \item{...}{Argumentos adicional empleado por la función \code{\link{calib}}.}
 }
 \value{
-Regresa un \code{data.frame} donde se reporta
+Returns a \code{data.frame} where report is made.
 \describe{
-\item{model}{Lista de modelos resultantes de la combinatoria de 1 a p}
-\item{R2}{El  \eqn{R^2} para cada modelo definido.}
-\item{cme}{El cuadrado medio del error obtenido en la estimación}}
+\item{model}{List of models resulting from \eqn{\sum_{i=1}^{p} {{p}\choose{i}}}}
+\item{R2}{El  \eqn{R^2} for each model definedo.}
+\item{mse}{Mean squared error obtained in the estimation}}
 }
 \description{
-Función que seleciona un modelo para el GREG  basado
-en el cuadrado medio del error (CME), con base en todas las posibles
-combinanciones que puedan ser obtenidas de un  conjunto de \code{p} variables.
+Function which selects a model for the GREG based on the mean squared error (MSE),
+based on all possible combinations that may be obtained from a set of \code{p} variables.
 }
 \examples{
 data('ResultStudent')

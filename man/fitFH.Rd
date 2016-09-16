@@ -4,39 +4,39 @@
 \alias{fitFH}
 \title{Small Area Estimation under a Fay Herriot model.}
 \usage{
-fitFH(x, yhat, Sd.yhat, xk, method = "REML", x.predic = NULL)
+fitFH(x, yhat, Sd.yhat, xk, method = "REML", x.predic = NULL,
+  formula = NULL)
 }
 \arguments{
-\item{x}{\code{data.frame} que contiene la información necesaria para realizar las estimaciones}
+\item{x}{\code{data.frame} which contains the information necessary to make the estimations.}
 
-\item{yhat}{Nombre de la columna que contiene los valores estimados de la variable}
+\item{yhat}{Name of the column containing the variable’s estimated values.}
 
-\item{Sd.yhat}{Nombre de la columna de desviación estándar estimada para  \code{yhat}}
+\item{Sd.yhat}{Name of the column of estimated standard deviation for  \code{yhat}}
 
-\item{xk}{Vector de caractres que contiene los nombres de las covariables}
+\item{xk}{vector of characters which contains the names of the covariantes.}
 
-\item{method}{Método de estimación empledo por la función \code{\link{eblupFH}}}
+\item{method}{Estimation method used by the function \code{\link{eblupFH}}}
 
-\item{x.predic}{Observaciones a las cuales se realizará el pronóstico}
+\item{x.predic}{Observations on which the forecast will be made}
 }
 \description{
-La función realiza la estimación del mejor predictor lineal  insesgado (EBLUP)
-basado en el modelo Fay Herriot.
+The function makes the estimation of the best lineal unbiased predictor (EBLUP) based on the Fay Herriot model.
 }
 \examples{
-# Lectura de los datos
+# Reading data
 data('etc2013')
-# Agregar dummys
+# Add dummys
 etc2013[["IND"]] <- ifelse(is.na(etc2013[["hat.prom"]]), 'NO','SI')
-# Identificar observaciones con datos faltantes
+# Identify observations with missing data
 etc2013[["IMP"]] <- apply(etc2013[,c('x1','x2','x3','x4')], 1,
                          function(x){ifelse(anyNA(x),'IMP','NO_IMP')})
 table(etc2013[,c("IND","IMP")])
-# Separar las observaciones
+# Separate observations
 sampling <- subset( etc2013,IND == 'SI' & IMP == 'NO_IMP')
-# Variable de pronóstico
+# Variable prediction
 predic   <- subset(etc2013,!c(IND == 'SI' & IMP == 'NO_IMP'))
-# Imputar observaciones en para el prónostico
+# Impute observations prediction
 imp <- mice::mice(predic[,c('x1','x2','x3','x4')], method = 'norm.boot')
 predic[,c('x1','x2','x3','x4')] <- complete(imp)
 

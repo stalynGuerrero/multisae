@@ -1,21 +1,21 @@
 #' Estimated variance for the estimator GREG using the jackknife method
 #'@description
-#' La función realiza la estimación de las varianzas para el estimador
-#' Horvitz-Thompson (TH)  y el estimador de regresión generalizada (GREG)
-#' cuando se emplean los valores plausibles. La estimación de la varianza estimada
-#' para un dominio viene dada por la  ecuación
+#' The function makes the estimation of variances for the Horvitz-Thompson estimator (TH)
+#' and the generalized regression estimator (GREG) when plausible values are employed.
+#' The estimation of the variance for a domain is given by the equation
 #' \deqn{EE(\hat{\eta}) = \sqrt{\frac{1}{5}\sum_{i=1}^{5}Var_m(\hat{\eta}_i)+
 #'          \left(1 + \frac{1}{5}\right)\frac{1}{4}\sum_{i=1}^{5}(\hat{\eta}_i -
 #'          \hat{\eta})^2}}
 #'
-#' donde \eqn{Var_m(\hat{\eta}_i)} es la varianza del estimador calculada a partir
-#' de las observaciones y el  diseño muestral.
-#' El segundo término de la ecuación es estimada utilizando el método jackknife.
-#' En el caso del  estimador de regresión generalizada, es necesario ajustar un modelo lineal,
-#' donde el valor plausible \eqn{\hat{\eta}_{ij}} es incluido como la variable respuesta, así:
+#' where \eqn{Var_m(\hat{\eta}_i)} is the variance of the estimator calculated
+#' from the observations and the sampling design. The second term of the equation
+#' is estimated by using the jackknife method. In the case of the generalized
+#' regression estimator, it is necessary to adjust a lineal model, where
+#' the plausible value \eqn{\hat{\eta}_{ij}} included as the response variable, as follows:
 #' \deqn{\hat{\eta}_{ij}=\beta X_i+e_{ij}}
-#' con \eqn{X_i} es la información auxiliar, empleando los residuales estimados del modelo
-#' se estima la varianza del GREG para cada dominio, utilizando la expresión
+#' The GREG variance is estimated for each doman with \eqn{X_i} as auxiliary information,
+#' employing the model’s estimated residuals using the expression
+#'
 #' \deqn{\widehat{Var}(\hat{\eta}_{GREG})=\sum\sum_s\frac{\Delta_{jl}}{\pi_{jl}}g_{js}
 #'       \frac{\hat{e}_{js}}{\pi_j}g_{ls}\frac{\hat{e}_{ls}}{\pi_l}}
 #'donde
@@ -24,13 +24,13 @@
 #'\item{-}{\eqn{\hat{e}_{ij} = \hat{\eta}_{ij} - \hat{\beta} X_i}}
 #'\item{-}{\eqn{w_j = \frac{1}{\pi_j}}}
 #' }
-#'@param x       \code{data.frame} que contiene la información necesaria para realizar las estimaciones
-#'@param yhat    Nombre de la columna que contiene los valores estimados de la variable
-#'@param weight  Factor de expansión de cada observación
-#'@param total   Total de la variable auxiliar
-#'@param Xk      Vector que contiene los nombres de las covariables.
-#'@param stratum Indicadora de los dominios en la muestra, por defecto \code{stratum = NULL}
-#'@param ...     Argumentos adicionales empleados por la función \link{calib}
+#'@param x       \code{data.frame} which contains the information necessary to make the estimations
+#'@param yhat    Name of the column which contains the estimated values of the variable
+#'@param weight  Expansion factor of each observation
+#'@param total   Total for the auxiliary variable
+#'@param Xk      Vector which contains the names of the covariantes.
+#'@param stratum Indicator of the domains in the sample, by default  \code{stratum = NULL}
+#'@param ...     Additional arguments employed by the \link{calib} function.
 
 #' @references
 #'\describe{
@@ -40,18 +40,18 @@
 #'        they useful. IERI monograph series, 2, 9-36.}
 #'}
 #'
-#'@return Retorna un \code{\link{data.frame}} con los resultados obtenidos para el estimador de Horvitz-Thompson  y
-#' el GREG, así como sus respectivas varianzas para los grupos y subgrupos.
+#'@return Returns a \code{\link{data.frame}} with the results obtained for the Horvitz-Thompson
+#' estimator and the GREG as well as their corresponding variances for the indicated groups and subgroups
 #'@examples
 #'data('ResultStudent')
 #'attach(ResultStudent)
 #' sampling <- ResultStudent[["student"]]
-#' #Crear variables dummys
+#' #Add dummys
 #' sampling <- data.frame(sampling[,c("schooltype",'weight','prop','ses')],
 #'                       Domains(sampling[["urbanicity"]]),
 #'                       Domains(sampling[["schooltype"]]))
 #'
-#' # Covariables
+#' # Covariantes
 #' Xk <- c('Rural', 'Urbana','No.Oficial', 'Oficial', 'ses')
 #'
 #'jackknifeVar(x=sampling,yhat = "prop",weight = 'weight',
@@ -65,7 +65,7 @@
 #'            Xk = 'ses',total = total, method='linear',
 #'            stratum = 'schooltype')
 
-#'@seealso  \code{\link{calib}}
+#'@seealso  \code{\link{calib}, \link{E.GREG}}
 #' @export
 
 

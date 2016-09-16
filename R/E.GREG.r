@@ -1,29 +1,26 @@
 #' Generalized regression estimator (GREG)
 #'@description
-#' La función hace el cálculo del error cuadrático medio (ECM) para el conjunto
-#' de covariables usadas el GREG
-#'@param   x          \code{data.frame} que contiene la información necesaria
-#'                    para realizar las estimaciones.
-#'@param   Xk         Vector que contiene los nombres de las variables auxiliares.
-#'@param   total      Total de la variable auxiliar.
-#'@param   prom       Nombre de la(s) variables(s) a estimar.
-#'@param   weight     Factor de expansión de cada observación.
-#'@param   stratum    Indicadora de los dominios en la muestra, por defecto \code{stratum = NULL}.
-#'@param  ...         Argumentos adicionales para la función \code{\link{calib}}.
+#'The function calculates the mean squared error (MSE) for the set of covariables used in the GREG.
+#'@param   x          \code{data.frame} which contains the information necessary to make the estimations.
+#'@param   Xk         Vector which contains the names of the auxiliary variables.
+#'@param   total      Total of the auxiliary variable.
+#'@param   prom       Name of the variable(s) to be estimated.
+#'@param   weight     Expansion factor of each observation.
+#'@param   stratum    Indicator of the domains in the sample. By default \code{stratum = NULL}.
+#'@param  ...         Additional arguments for the \code{\link{calib}} function.
 #'@examples
-#' #Lectura de la base
+#' #Reading base
 #' data('ResultStudent')
 #' require(TeachingSampling)
-#' #Selección de los datos
+#' #Selecting data
 #' sampling <- ResultStudent[["student"]]
-#' #Creando variables dummys
+#' #Creating dummy variables
 #' sampling <- data.frame(sampling[,c('weight','prop','ses')],
 #'                       Domains(sampling[["urbanicity"]]),
 #'                       Domains(sampling[["schooltype"]]))
-#' #Total por variable dummy
+#'#Total variable dummy
 #' total <- ResultStudent[["total"]]
 #'
-#' #Identifica covariables
 #' Xk <- c('Rural', 'Urbana','No.Oficial', 'Oficial', 'ses')
 #'
 #' E.GREG(x = sampling,total = total, Xk = Xk,
@@ -31,8 +28,8 @@
 #'@return
 #'Retorna un \code{data.frame}
 #'\describe{
-#'\item{R2}{El  \eqn{R^2} para el modelo definido.}
-#'\item{cme}{El cuadrado medio del error obtenido en la estimación}
+#'\item{R2}{El  \eqn{R^2} for the model  defined}
+#'\item{mse}{The mean squared error obtained in the estimation}
 #'}
 #'@seealso \code{\link{S.fitFH}}, \code{\link{calib}}
 #'@references
@@ -86,7 +83,7 @@ E.GREG <- function(x, Xk, total, prom, weight, stratum = NULL, ...) {
     for (i in 1:length(prom)) {
         xk <- abs(PROM.IE[, 1 + i] - PROM.GREG[, 1 + i])^2
         n <- length(xk)
-        texto <- paste("Resul$cme", i, "<-sum(xk,na.rm = T)/n", sep = "")
+        texto <- paste("Resul$mse", i, "<-sum(xk,na.rm = T)/n", sep = "")
         eval(parse(text = texto))
     }
     Resul

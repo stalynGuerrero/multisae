@@ -7,46 +7,43 @@
 E.GREG(x, Xk, total, prom, weight, stratum = NULL, ...)
 }
 \arguments{
-\item{x}{\code{data.frame} que contiene la información necesaria
-para realizar las estimaciones.}
+\item{x}{\code{data.frame} which contains the information necessary to make the estimations.}
 
-\item{Xk}{Vector que contiene los nombres de las variables auxiliares.}
+\item{Xk}{Vector which contains the names of the auxiliary variables.}
 
-\item{total}{Total de la variable auxiliar.}
+\item{total}{Total of the auxiliary variable.}
 
-\item{prom}{Nombre de la(s) variables(s) a estimar.}
+\item{prom}{Name of the variable(s) to be estimated.}
 
-\item{weight}{Factor de expansión de cada observación.}
+\item{weight}{Expansion factor of each observation.}
 
-\item{stratum}{Indicadora de los dominios en la muestra, por defecto \code{stratum = NULL}.}
+\item{stratum}{Indicator of the domains in the sample. By default \code{stratum = NULL}.}
 
-\item{...}{Argumentos adicionales para la función \code{\link{calib}}.}
+\item{...}{Additional arguments for the \code{\link{calib}} function.}
 }
 \value{
 Retorna un \code{data.frame}
 \describe{
-\item{R2}{El  \eqn{R^2} para el modelo definido.}
-\item{cme}{El cuadrado medio del error obtenido en la estimación}
+\item{R2}{El  \eqn{R^2} for the model  defined}
+\item{mse}{The mean squared error obtained in the estimation}
 }
 }
 \description{
-La función hace el cálculo del error cuadrático medio (ECM) para el conjunto
-de covariables usadas el GREG
+The function calculates the mean squared error (MSE) for the set of covariables used in the GREG.
 }
 \examples{
-#Lectura de la base
+#Reading base
 data('ResultStudent')
 require(TeachingSampling)
-#Selección de los datos
+#Selecting data
 sampling <- ResultStudent[["student"]]
-#Creando variables dummys
+#Creating dummy variables
 sampling <- data.frame(sampling[,c('weight','prop','ses')],
                       Domains(sampling[["urbanicity"]]),
                       Domains(sampling[["schooltype"]]))
-#Total por variable dummy
+#Total variable dummy
 total <- ResultStudent[["total"]]
 
-#Identifica covariables
 Xk <- c('Rural', 'Urbana','No.Oficial', 'Oficial', 'ses')
 
 E.GREG(x = sampling,total = total, Xk = Xk,

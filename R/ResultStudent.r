@@ -1,30 +1,29 @@
 #' Students' results in saber 3, 5, and 9 exam in 2015
 #' @description
-#' Proporción de respuestas correctas en matemáticas, obtenidas por los estudiantes
-#' de grado 7 que presentaron el examen  saber 3, 5, y 9 en el 2015.
-#' @format La \code{list}  tiene dos \code{data.frame} con la sigueinte información
+#' Ratio of correct answers in mathematics obtained by the students of 7th grade who sat the
+#' Saber 3, 5, and 9 tests in 2015
+#' @format The \code{\link{list}} has two \code{data.frame} with the following information
 #'\describe{
-#' \item{student}{\code{data.frame} tiene 341 filas  y 5 columnas}
+#' \item{student}{\code{data.frame} has 341 rows and 5 columns.}
 #'      \itemize{
-#'         \item{\code{urbanicity}: }{Identifica si el estudiante estudia en un
-#'                                    colegio del sector oficial o no oficial.}
-#'         \item{\code{schooltype}: }{Identifica a los estudiantes que se encuentran
-#'                                    matriculados en colegios pertenecientes al sector oficial o no oficial}
-#'         \item{\code{weight}: }{Factor de expansión resultante del diseño muestral}
-#'         \item{\code{prop}: }{Proporción de respuestas correctas}
-#'         \item{\code{ses}: }{Índice socioeconómico estimado para el estudiante}
+#'         \item{\code{urbanicity}: }{Identifies whether the student studies in a school
+#'                                    from the official or non-official sector.}
+#'         \item{\code{schooltype}: }{Identifies the students enrolled in schools belonging
+#'                                    to the official or non-official sector}
+#'         \item{\code{weight}: }{Expansion factor resulting from the sampling design}
+#'         \item{\code{prop}: }{Ration of correct answers}
+#'         \item{\code{ses}: }{Estimated socioeconomic index for the student}
 #'              }
-#' \item{total}{\code{data.frame} tiene los totales por modalidad de las variables
-#' en el 2013.}
+#' \item{total}{\code{data.frame} has the totals per modality of the variables in the year 2013.}
 #'      \itemize{
-#'         \item{\code{Rural}: }{Número de estudiantes en la zona rural de la entidad territorial certificada}
-#'         \item{\code{Urbana}: }{Número de estudiantes en la zona urbana de la entidad territorial certificada}
-#'         \item{\code{No.Oficial}: }{Número de estudiantes matricualdos en los colegios
-#'                                    no oficial en la entidad territorial certificada}
-#'         \item{\code{Oficial}: }{Número de estudiantes matricualdos en los colegios
-#'                                 oficiales en la entidad territorial certificada}
-#'         \item{\code{ses}: }{Sumatroria del índice socioeconómico estimado para los entudiantes
-#'                             en la entidad territorial certificada}
+#'         \item{\code{Rural}: }{Number of students in the rural area of the certified territorial entity.}
+#'         \item{\code{Urbana}: }{Number of students in the urban area of the certified territorial entity.}
+#'         \item{\code{No.Oficial}: }{Number of students enrolled in non-official schools of the
+#'                                    certfied territorial entity. }
+#'         \item{\code{Oficial}: }{Number of students enrolled in official schools of the
+#'          certified territorial entity.}
+#'         \item{\code{ses}: }{Estimated sum of socioeconomic index for students
+#'                             in the certified territorial entity}
 #'              }
 #'}
 #'@references

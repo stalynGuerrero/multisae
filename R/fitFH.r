@@ -1,28 +1,26 @@
 #' Small Area Estimation under a Fay Herriot model.
 #'@description
-#' La función realiza la estimación del mejor predictor lineal  insesgado (EBLUP)
-#' basado en el modelo Fay Herriot.
-
-#'@param x            \code{data.frame} que contiene la información necesaria para realizar las estimaciones
-#'@param x.predic     Observaciones a las cuales se realizará el pronóstico
-#'@param yhat         Nombre de la columna que contiene los valores estimados de la variable
-#'@param Sd.yhat      Nombre de la columna de desviación estándar estimada para  \code{yhat}
-#'@param xk           Vector de caractres que contiene los nombres de las covariables
-#'@param method       Método de estimación empledo por la función \code{\link{eblupFH}}
+#'The function makes the estimation of the best lineal unbiased predictor (EBLUP) based on the Fay Herriot model.
+#'@param x            \code{data.frame} which contains the information necessary to make the estimations.
+#'@param x.predic     Observations on which the forecast will be made
+#'@param yhat         Name of the column containing the variable’s estimated values.
+#'@param Sd.yhat      Name of the column of estimated standard deviation for  \code{yhat}
+#'@param xk           vector of characters which contains the names of the covariantes.
+#'@param method       Estimation method used by the function \code{\link{eblupFH}}
 #'@examples
-#'# Lectura de los datos
+#'# Reading data
 #'data('etc2013')
-#'# Agregar dummys
+#'# Add dummys
 #'etc2013[["IND"]] <- ifelse(is.na(etc2013[["hat.prom"]]), 'NO','SI')
-#'# Identificar observaciones con datos faltantes
+#'# Identify observations with missing data
 #'etc2013[["IMP"]] <- apply(etc2013[,c('x1','x2','x3','x4')], 1,
 #'                          function(x){ifelse(anyNA(x),'IMP','NO_IMP')})
 #'table(etc2013[,c("IND","IMP")])
-#'# Separar las observaciones
+#'# Separate observations
 #'sampling <- subset( etc2013,IND == 'SI' & IMP == 'NO_IMP')
-#'# Variable de pronóstico
+#'# Variable prediction
 #'predic   <- subset(etc2013,!c(IND == 'SI' & IMP == 'NO_IMP'))
-#'# Imputar observaciones en para el prónostico
+#'# Impute observations prediction
 #'imp <- mice::mice(predic[,c('x1','x2','x3','x4')], method = 'norm.boot')
 #'predic[,c('x1','x2','x3','x4')] <- complete(imp)
 #'
@@ -43,12 +41,15 @@
 
 #' @export
 fitFH <- function(x, yhat, Sd.yhat, xk, method = "REML",
-                     x.predic = NULL) {
+                     x.predic = NULL,formula = NULL) {
 
-    x[["Intercept"]] <- 1
+  if (method != "REML" & method != "ML" & method != "FH")
+    stop(" method=\"", method, "\" must be \"REML\", \"ML\" or \"FH\".")
 
+  if(is.null(x))  stop("x, not defined")
 
-    formula <- paste0("x$", xk, collapse = " + ")
+  x[["Intercept"]] <- 1
+  formula <- paste0("x$", xk, collapse = " + ")
 
     model <- paste0("fit <- eblupFH(as.vector(x$", yhat, ")~",
                     formula, ",vardir=x$", Sd.yhat, "^2, method ='", method, "')")

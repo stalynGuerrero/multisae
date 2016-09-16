@@ -1,15 +1,13 @@
 #' Plot map of Colombia
-#'@description Función que dibuja el mapa de Colombia y los resultados agregados por nivel deseado.
+#'@description Function which plots the map of Colombia and the aggregated results per level desired.
 #'@param x            \code{data.frame}
-#'@param x.graph      Nombre de la variable contenida en \code{x} a graficar en el
-#'                    el mapa.
-#'@param id.nivagre   Variable que contiene los códigos de identificacion según
-#'                    la desagregación deseada
-#'@param nivagre      Nivel de agregación deseado municipal ('mpio'),
-#'                    departamental ('dpto') o entidad territorial certificada ('ETC')
-#'@param n            Número de categorías en que se divide variable \code{x.graph}
-#'@param divipola     \code{data.frame} que relaciona la división política en Colombia.
-#'@param ShapesCol    Shapes de la división político administrativa de Colombia
+#'@param x.graph      Name of the variable contained in  \code{x} to be graphed on the map.
+#'@param id.nivagre   Variable which contains the identification codes as per the desired disaggregation
+#'@param nivagre      Desired municipal (‘mpio’), departmental (‘dpto’), or certified territorial entity ('ETC')
+#'                    desired aggregation levels.
+#'@param n            Number of categories into which the variable \code{x.graph} is divided.
+#'@param divipola     \code{data.frame} which lists the territorial división in Colombia.
+#'@param ShapesCol    Shapes of the political-administrative division of Colombia
 #'
 #'@examples
 #'data('cal.muni')
@@ -45,7 +43,7 @@
 #'vp <- viewport(width = 0.1, height = 0.2, x = 0.15, y = 0.75, just = c("left", "bottom"))
 #'print(subCatalina, vp = vp)
 #'
-#'@return El mapa de Colombia como objeto ggplot
+#'@return The map of Colombia as a \code{ggplot} object.
 #'@seealso \code{\link{divipola}, \link{etc2013}, \link{ggmap}, \link{ggplot2}, \link{ShapesCol}}
 #'@export
 PlotMapColombia <- function(x, x.graph, id.nivagre, nivagre, n = 10,

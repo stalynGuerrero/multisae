@@ -12,8 +12,8 @@
 ShapesCol
 }
 \description{
-Shapes de la División político administrativa de Colombia, descargado del
- Instituto Geográfico Agutín Codazzi (IGAC)
+Shapes of Colombia’s political-administrative division, downloaded from Instituto Geografico Agustin
+Codazzi (IGAC, Spanish acronym for Agustin Codazzi Geographic Institute)
 }
 \keyword{datasets}
 

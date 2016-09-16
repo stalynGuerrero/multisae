@@ -6,14 +6,13 @@
 \title{Result by municipality in exam Saber 3, 5 and 9 for 9th grade in mathematics test}
 \format{This \code{data.frame} has 1125 rows and 6 columns.
 \describe{
-\item{dpto}{Identificador del departamento}
-\item{namesdpto}{Nombre del departamento}
-\item{mpio}{Es el identificador del municipio}
-\item{namesmpio}{Nombre del municipio}
-\item{codETC}{Identificador de la entidad territorial certificada (ETC)}
-\item{prom}{Resultado promedio en matemáticas para grado 9 de
-            cada municipio colombiano participante en la prueba Saber 3, 5 y 9
-            en el 2015.}}}
+\item{dpto}{Identifier of the department}
+\item{namesdpto}{Name of the department}
+\item{mpio}{Identifier of the municipality}
+\item{namesmpio}{Name of the municipality}
+\item{codETC}{Identifier of the certified territorial entity (ETC, for its acronym in Spanish)}
+\item{prom}{Average result in Mathematics for the 9th grades
+            in each participating Colombian municipality in the Saber 3, 5, and 9 exam in 2015. }}}
 \source{
 \href{http://www.icfes.gov.co/item/1861-investigador-el-icfes-actualizo-ftp-para-facilitar-acceso-a-sus-bases-de-datos}{ftp://ftp.icfes.gov.co/}
 }
@@ -21,8 +20,8 @@
 cal.muni
 }
 \description{
-\code{data.frame} que contiene los puntajes en matemáticas del grado 9
-agregados por municipio, en el examen Saber 3, 5 y 9 aplicadas en el 2015 en Colombia.
+\code{data.frame} which contains the scores in 9th grade Mathematics aggregated per
+ municipality on the Saber 3, 5, and 9 exams applied in the 2015 in Colombia.
 }
 \references{
 Instituto Colombiano para la Evaluación de la Educación ICFES, (2016).

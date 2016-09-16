@@ -7,41 +7,39 @@
 S.fitFH(x, yhat, Sd.yhat, Xk, p = 1, y = NULL)
 }
 \arguments{
-\item{x}{\code{data.frame} que contiene las variables del modelo.}
+\item{x}{\code{data.frame} which contains the model´s variables.}
 
-\item{yhat}{Nombre de la columna en \code{x} que indica la variable ha estimar.}
+\item{yhat}{Name of the column in \code{x} which indicates the variable to estimate.}
 
-\item{Sd.yhat}{Nombre de la columna en \code{x} que indica la desviación estándar
-estimada para \code{yhat}.}
+\item{Sd.yhat}{Name of the column in \code{x} which indicates the standard deviation
+estimated for \code{yhat}.}
 
-\item{Xk}{Vector que contiene los nombres de las variables auxiliares,
-estas deben estar contenidas en \code{x}.}
+\item{Xk}{Vector which contains the names of the auxiliary variables. These must
+be contained in \code{x}.}
 
-\item{p}{Número máximo de combinaciones a realizar con las covariables,
-por defecto \code{p = 1}.}
+\item{p}{Maximum number of combinations to make with the covariantes.
+By default \code{p = 1}.}
 
-\item{y}{Opcional, nombre de la columna en \code{x} que tiene los valores
-reales de la variable estimada.}
+\item{y}{Optional. Name of the column in \code{x} that has the actual values
+of the estimated variable.}
 }
 \value{
-Regresa un objeto de clase \code{data.frame}, que tiene las medidas de resumen
-empleadas para la selección del modelo deseado.
+Returns an object of the \code{data.frame} class, which has the summary measures
+employed for the selection of the desired model.
 \describe{
-\item{model}{Lista de modelos resultantes de la combinatoria \eqn{\sum_{i=1}^{p} {{p}\choose{i}} } para \eqn{i=1\ldots p}}
-\item{loglike}{Medidas de calidad relativas al modelo basado en la función de verosimilitud}
-\item{cme.Sample}{Cuadrado medio del error obtenido para las observaciones
-                 sin datos faltantes en sus covariables}
-\item{N.sample}{Número de observaciones sin datos faltantes}
-\item{cme.predict}{Cuadrado medio del error obtenido para los pronósticos}
-\item{N.predict}{Número de observaciones a la que se les hace el prónostico}
-\item{cme.predictIMP}{El cuadrado medio del error obtenido para los prónosticos
-                     con imputación}
-\item{N.predictIMP}{Número de observaciones imputadas}}
+\item{model}{List of models resulting from \eqn{\sum_{i=1}^{p} {{p}\choose{i}}}}
+\item{loglike}{Quality measures related to the model based on the likelihood function}
+\item{mse.Sample}{Mean squared error obtained for observations without missing data in their covariantes.}
+\item{N.sample}{Number of observations without missing data.}
+\item{mse.predict}{Mean squared error obtained for the forecasts.}
+\item{N.predict}{Number of observations with prediction}
+\item{mse.predictIMP}{Mean square error obtained for predictions with observations missing covariates}
+\item{N.predictIMP}{Number of observations with missing data}
+}
 }
 \description{
-Función que seleciona un modelo Fay Herriot  basado
-en el cuadrado medio del error (CME), con base en todas las posibles
-combinanciones de \code{p} variables.
+Function that selects a Fay Herriot model based on the mean squared error (MSE),
+based on all possible combinations of \code{p} variables
 }
 \examples{
 data('etc2013')

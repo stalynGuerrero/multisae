@@ -9,26 +9,24 @@ PlotMapColombia(x, x.graph, id.nivagre, nivagre, n = 10, divipola, ShapesCol)
 \arguments{
 \item{x}{\code{data.frame}}
 
-\item{x.graph}{Nombre de la variable contenida en \code{x} a graficar en el
-el mapa.}
+\item{x.graph}{Name of the variable contained in  \code{x} to be graphed on the map.}
 
-\item{id.nivagre}{Variable que contiene los códigos de identificacion según
-la desagregación deseada}
+\item{id.nivagre}{Variable which contains the identification codes as per the desired disaggregation}
 
-\item{nivagre}{Nivel de agregación deseado municipal ('mpio'),
-departamental ('dpto') o entidad territorial certificada ('ETC')}
+\item{nivagre}{Desired municipal (‘mpio’), departmental (‘dpto’), or certified territorial entity ('ETC')
+desired aggregation levels.}
 
-\item{n}{Número de categorías en que se divide variable \code{x.graph}}
+\item{n}{Number of categories into which the variable \code{x.graph} is divided.}
 
-\item{divipola}{\code{data.frame} que relaciona la división política en Colombia.}
+\item{divipola}{\code{data.frame} which lists the territorial división in Colombia.}
 
-\item{ShapesCol}{Shapes de la división político administrativa de Colombia}
+\item{ShapesCol}{Shapes of the political-administrative division of Colombia}
 }
 \value{
-El mapa de Colombia como objeto ggplot
+The map of Colombia as a \code{ggplot} object.
 }
 \description{
-Función que dibuja el mapa de Colombia y los resultados agregados por nivel deseado.
+Function which plots the map of Colombia and the aggregated results per level desired.
 }
 \examples{
 data('cal.muni')
@@ -66,6 +64,6 @@ print(subCatalina, vp = vp)
 
 }
 \seealso{
-\code{\link{ggmap}, \link{ggplot2}, \link{divipola}, \link{etc2013},\link{ShapesCol}}
+\code{\link{divipola}, \link{etc2013}, \link{ggmap}, \link{ggplot2}, \link{ShapesCol}}
 }
 
